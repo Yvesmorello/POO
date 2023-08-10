@@ -1,42 +1,18 @@
-import herancajava.domain.Celular;
-import herancajava.domain.Produto;
-import herancajava.domain.Teclado;
-import herancajava.service.Calculadora;
-import interfacejava.domain.ControleAr;
-import interfacejava.domain.FoneOuvido;
-
-import java.util.Arrays;
-import java.util.List;
+import domain.Funcionario;
+import domain.Gerente;
+import domain.Movimentacao;
+import domain.Programador;
+import java.time.LocalDate;
 
 public class Main {
-    //interface
     public static void main(String[] args) {
 
-            FoneOuvido foneOuvido = new FoneOuvido("Com fio", 85.99);
-            ControleAr controleAr = new ControleAr("LG", "branco", 102);
+        Funcionario Joao = new Funcionario("João", 33, 1555, new Programador(), LocalDate.of(1989,8,29), new Movimentacao(1,1,1));
+        Funcionario henrique = new Funcionario("Henrique",33, 1555, new Programador(), LocalDate.of(1989,8,29), new Movimentacao(1, 1, 1));
+        Funcionario Maria = new Funcionario("Maria", 20, 1999, new Gerente(), LocalDate.of(2000,5,29), new Movimentacao(1, 1, 1));
 
-            interfacejava.service.Calculadora calculadora = new interfacejava.service.Calculadora();
 
-            List<interfacejava.domain.Produto> produtos = Arrays.asList(foneOuvido, controleAr);
-
-            double resultado = calculadora.calcularDescontoTotal(produtos);
-
-            System.out.println(resultado);
+        System.out.println(henrique.getNome());
+        System.out.println(henrique.getCargo().valorSalario(new Movimentacao(1,1,1)));
     }
-
-    //herança
-        public static void heranca () {
-            Teclado teclado = new Teclado("Logitech", 150.88);
-            Celular celular = new Celular("Celular LG", 2500d);
-
-            Calculadora calculadora = new Calculadora();
-
-            List<Produto> produtos = Arrays.asList(teclado, celular);
-
-            double resultado = calculadora.calcularTotal(produtos);
-
-            System.out.println(resultado);
-
-        }
-
 }
